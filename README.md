@@ -2,4 +2,4 @@
 Assignment framework for CS283 Game Programming
 
 git push test
-![particleGIF](https://github.com/user-attachments/assets/897076cd-118e-4141-8bf7-8d40331c65fa)
+![particle111](https://github.com/user-attachments/assets/3ab60297-f9bf-4163-bfd5-72c3b997d328)
