@@ -12,13 +12,13 @@ using System.Data;
 
 public class Window : System.Windows.Forms.Form
 {
-    private static int _windowHeight = 480;
+    private static int _windowHeight = 600;
     public static int height 
     {
         get { return _windowHeight; }
     }
 
-    private static int _windowWidth = 640;
+    private static int _windowWidth = 800;
     public static int width 
     {
         get { return _windowWidth; }
