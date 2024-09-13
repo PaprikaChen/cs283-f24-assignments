@@ -1,18 +1,28 @@
-﻿using System;
+﻿/* 
+ * Game.cs
+ * Author: Paprika Chen
+ * Date: 2024/9/11
+ * 
+ * This is the main class for managing the game logic.
+ * It controls the game states, updates the game objects (Player, Duck), and handles user input.
+ */
+
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
 public class Game 
 {
+    // the collection of different states 
     public enum GameState 
     {
         CoverPage,
         IntroPage,
         TaskCutCake,
         TaskChaseDucky,
-        ChaseSuccess,
-        ChaseFail,
+        ChaseSuccess, // the state when the player caught the duck
+        ChaseFail, // the state when the player fail to catch the duck
         TaskTurnOnTV,
         SuccessPage
     }
@@ -42,14 +52,23 @@ public class Game
     private bool _chaseStart = false;
     private bool _chasePressD = false;
 
-    // TV task
-    private readonly Keys[] _correctSeq = {Keys.Left, Keys.Right, Keys.Up, Keys.Left, Keys.Up, Keys.Right, Keys.Left, Keys.Left};
-    private List<Keys> _userInputSeq = new List<Keys>();
+    // TV task vars
+    private readonly Keys[] _correctSeq = { Keys.Left, Keys.Right, Keys.Up, Keys.Left, 
+                                            Keys.Up, Keys.Right, Keys.Left, Keys.Left };
+    private List<Keys> _userInputSeq = new List<Keys>(); // the list to store the user input sequence
 
+    /* 
+     * Setup method.
+     * Initializes game variables and loads images for different game stages.
+     * Resets cake click count and sliced status for the cake task.
+     * Loads player and duck objects and sets their initial positions and sizes.
+     * 
+     */
     public void Setup() 
     {
-        _cakeClicks = 0;
-        _cakeSliced = false;
+        _cakeClicks = 0; // count how many times the cake is clicked during the cake task
+        _cakeSliced = false; // record if the cake is sliced successfully or not
+
         _coverPageImage = Image.FromFile("page\\cover1.png");
         _introPageImage = Image.FromFile("page\\page2.png");
         _taskCakeImage = Image.FromFile("page\\caketask.png");
@@ -65,8 +84,16 @@ public class Game
         _duck = new Duck(new Point(250, 200), new Size(100, 100));
     }
 
+    /* 
+     * Update method.
+     * Updates the game state and the positions of the player and the duck. 
+     * 
+     * Parameters:
+     * - dt: The delta time
+     */
     public void Update(float dt) 
     {
+        // during the duck chase part, update the positions of the player and the duck
         if (_chaseStart && _currentState == GameState.TaskChaseDucky)
         {
             if (_chasePressD)
@@ -76,17 +103,26 @@ public class Game
             }
             _duck.Update(dt);
 
+            // if the player catches the duck
             if (_player.Position.X >= _duck.Position.X)
             {
                 _currentState = GameState.ChaseSuccess;
             }
-            else if ((_player.Position.X >= 1025 || _duck.Position.X >= 1025) && _currentState == GameState.TaskChaseDucky)
+            else if ((_player.Position.X >= 1025 || _duck.Position.X >= 1025) // if the duck escapes 
+                    && _currentState == GameState.TaskChaseDucky)
             {
                 _currentState = GameState.ChaseFail;
             }
         }
     }
 
+    /* 
+     * Draw method.
+     * Draw the appropriate game screen based on the current game state.
+     * 
+     * Parameters:
+     * - g: The Graphics object used to draw images to the screen.
+     */
     public void Draw(Graphics g) 
     {
         switch (_currentState)
@@ -148,6 +184,13 @@ public class Game
 
     }
 
+    /* 
+     * MouseClick method.
+     * Handles mouse click events during different game tasks.
+     * 
+     * Parameters:
+     * - mouse: The MouseEventArgs containing information about the mouse click.
+     */
     public void MouseClick(MouseEventArgs mouse)
     {
         if (mouse.Button == MouseButtons.Left)
@@ -163,6 +206,13 @@ public class Game
         }
     }
 
+    /* 
+     * KeyDown method.
+     * Handles keyboard input and updates the game state based on key presses.
+     * 
+     * Parameters:
+     * - key: The KeyEventArgs containing information about the key press.
+     */
     public void KeyDown(KeyEventArgs key)
     {
         if (_currentState == GameState.TaskTurnOnTV)
@@ -200,17 +250,12 @@ public class Game
         {
             _chasePressD = true;
         }
-        else if (key.KeyCode== Keys.S || key.KeyCode == Keys.Down)
-        {
-        }
-        else if (key.KeyCode == Keys.A || key.KeyCode == Keys.Left)
-        {
-        }
-        else if (key.KeyCode == Keys.W || key.KeyCode == Keys.Up)
-        {
-        }
     }
 
+    /* 
+     * CheckInputSeq method.
+     * Verifies if the user's input sequence matches the correct sequence for a task.
+     */
     private void CheckInputSeq()
     {
         if (_userInputSeq.Count > _correctSeq.Length)
