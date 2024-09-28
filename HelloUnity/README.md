@@ -7,6 +7,7 @@ This project is a low-poly 3D level designed in Unity. The level is divided into
 
 ## 2024/9/27 Updates
 - Added a main character.
+  
   <img width="629" alt="微信图片_20240927224247" src="https://github.com/user-attachments/assets/2a208316-a69d-4bec-abaa-b10486a0208c">
 - Interactive Camera and Flythrough Tour:
 
