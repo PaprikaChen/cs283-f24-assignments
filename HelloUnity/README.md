@@ -5,6 +5,14 @@ Paprika Chen
 
 This project is a low-poly 3D level designed in Unity. The level is divided into two main parts: the tram station where the character is born and a maze where the main activities occur.
 
+## 2024/9/27 Updates
+- Added a main character.
+  
+- Interactive Camera and Flythrough Tour:
+  ![HelloUnity - A04_Tour - Windows, Mac, Linux - Unity 2022 3 28f1 _DX11_ 2024-09-27 22-25-00 (1)](https://github.com/user-attachments/assets/3d7b6700-dd75-45c7-b88e-71b735a77037)
+  ![HelloUnity - A04_Tour - Windows, Mac, Linux - Unity 2022 3 28f1 _DX11_ 2024-09-27 22-25-00](https://github.com/user-attachments/assets/27a0701b-12d4-4443-b6f6-57778758aad4)
+<img width="629" alt="微信图片_20240927224247" src="https://github.com/user-attachments/assets/2a208316-a69d-4bec-abaa-b10486a0208c">
+
 ## Level Design
 <img width="1140" alt="6dd844a1cff314c0e05daa711f152e1" src="https://github.com/user-attachments/assets/df38725c-0a43-46fc-a45b-c67633011db0">
 
