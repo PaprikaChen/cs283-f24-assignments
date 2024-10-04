@@ -7,9 +7,11 @@ This project is a low-poly 3D level designed in Unity. The level is divided into
 
 ## 2024/10/3 Updates
 - Added Rigid camera:
+  
 ![HelloUnity - A05_Player - Rigid](https://github.com/user-attachments/assets/f5867ff5-4a8f-4e64-ad60-de82a847ef78)
 
 - Added Spring camera:
+  
 ![HelloUnity - A05_Player - Spring (1)](https://github.com/user-attachments/assets/ade020ab-e3a8-470b-ad28-7efc04da26bc)
 
 
