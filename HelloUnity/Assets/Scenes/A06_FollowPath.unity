@@ -384,7 +384,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241453114}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ea55bf0adb4b3747a360304dda6fa3d, type: 3}
   m_Name: 
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241453114}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f24188d7bd8eee43bb33d501231bec3, type: 3}
   m_Name: 
@@ -417,7 +417,7 @@ MonoBehaviour:
   - {fileID: 106417475}
   - {fileID: 655274702}
   duration: 3
-  useDeCasteljau: 1
+  useDeCasteljau: 0
 --- !u!1 &1552977654
 GameObject:
   m_ObjectHideFlags: 0
