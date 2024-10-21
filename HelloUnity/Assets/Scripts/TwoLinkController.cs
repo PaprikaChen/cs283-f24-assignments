@@ -38,8 +38,6 @@ public class TwoLinkController : MonoBehaviour
 
         Vector3 baseRotationAxis = Vector3.Cross(baseToEnd, endToTargetEffector).normalized;
 
-        Debug.Log("Base Rotation Axis: " + baseRotationAxis);
-
         float cosTheta = Mathf.Clamp((l1 * l1 + l2 * l2 - r * r) / (2 * l1 * l2), -1f, 1f);
         float theta = Mathf.Acos(cosTheta) * Mathf.Rad2Deg; 
 
@@ -54,6 +52,12 @@ public class TwoLinkController : MonoBehaviour
         Debug.DrawLine(baseJoint.position, middleJoint.position, Color.red);  
         Debug.DrawLine(middleJoint.position, endEffector.position, Color.blue);  
         Debug.DrawLine(endEffector.position, target.position, Color.green); 
+
+        float grandparentToEndEffectorDistance = Vector3.Distance(baseJoint.position, endEffector.position);
+        float grandparentToTargetDistance = Vector3.Distance(baseJoint.position, target.position);
+
+        // Print the calculated distances
+        Debug.Log("The first distance should be smaller or the same: " + grandparentToEndEffectorDistance + " and " + grandparentToTargetDistance);
     }
 }
 
