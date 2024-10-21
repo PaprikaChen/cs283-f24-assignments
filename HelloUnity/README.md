@@ -7,6 +7,7 @@ This project is a low-poly 3D level designed in Unity. The level is divided into
 
 ## 2024/10/20 Updates:
 - Linear camera:
+![HelloUnity - A06_FollowPath - Windows, Mac, Linux - Unity 2022 3 28f1 _DX11_ 2024-10-20 23-38-28 (1)](https://github.com/user-attachments/assets/c7e4468e-e02f-4580-acdb-d1c2c16aa0e8)
 
 
 - cubic camera:
