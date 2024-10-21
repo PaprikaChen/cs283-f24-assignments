@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class TwoLinkController : MonoBehaviour
 {
-    public Transform target;  
-    public Transform endEffector; 
+    public Transform target; 
+    public Transform endEffector;  
 
-    private Transform middleJoint;  
-    private Transform baseJoint; 
+    private Transform middleJoint; 
+    private Transform baseJoint;  
 
     void Start()
     {
@@ -19,37 +19,43 @@ public class TwoLinkController : MonoBehaviour
         if (target == null || endEffector == null) return;
 
         // Calculate the distances
-        float upperArmLength = Vector3.Distance(baseJoint.position, middleJoint.position); 
-        float lowerArmLength = Vector3.Distance(middleJoint.position, endEffector.position);  
-        float targetDistance = Vector3.Distance(baseJoint.position, target.position);  
+        float upperArmLength = Vector3.Distance(baseJoint.position, middleJoint.position);  // Shoulder to elbow
+        float lowerArmLength = Vector3.Distance(middleJoint.position, endEffector.position);  // Elbow to hand
+        float targetDistance = Vector3.Distance(baseJoint.position, target.position);  // Shoulder to target
 
+        // Clamp target distance to ensure it's within the arm's total length
         targetDistance = Mathf.Min(targetDistance, upperArmLength + lowerArmLength);
 
+        Vector3 baseToMiddle = middleJoint.position - baseJoint.position;
+        Vector3 middleToTarget = target.position - middleJoint.position;
+        Vector3 baseToEnd = target.position - baseJoint.position;
+        Vector3 endToTargetEffector = target.position - endEffector.position;
+        float l1 = baseToMiddle.magnitude;
+        float l2 = (endEffector.position - middleJoint.position).magnitude;
+        float r = baseToEnd.magnitude;
 
-        Vector3 shoulderToTargetDir = (target.position - baseJoint.position).normalized;
-        endEffector.position = target.position;  
+        Vector3 middleRotationAxis = Vector3.Cross(baseToMiddle, middleToTarget).normalized;
 
-        float cosTheta = Mathf.Clamp((Mathf.Pow(upperArmLength, 2) + Mathf.Pow(lowerArmLength, 2) - Mathf.Pow(targetDistance, 2)) / (2 * upperArmLength * lowerArmLength), -1f, 1f);
-        float theta = Mathf.Acos(cosTheta);  
+        Vector3 baseRotationAxis = Vector3.Cross(baseToEnd, endToTargetEffector).normalized;
 
+        Debug.Log("Base Rotation Axis: " + baseRotationAxis);
 
-        float cosAlpha = Mathf.Clamp((Mathf.Pow(upperArmLength, 2) + Mathf.Pow(targetDistance, 2) - Mathf.Pow(lowerArmLength, 2)) / (2 * upperArmLength * targetDistance), -1f, 1f);
-        float alpha = Mathf.Acos(cosAlpha);  
-        Vector3 elbowToHandDir = (endEffector.position - middleJoint.position).normalized;  
-        middleJoint.rotation = Quaternion.LookRotation(elbowToHandDir, middleJoint.up);
+        float cosTheta = Mathf.Clamp((l1 * l1 + l2 * l2 - r * r) / (2 * l1 * l2), -1f, 1f);
+        float theta = Mathf.Acos(cosTheta) * Mathf.Rad2Deg; 
 
-        middleJoint.localRotation *= Quaternion.Euler(theta * Mathf.Rad2Deg, 0, 0);
+        Vector3 crossProduct = Vector3.Cross(baseToEnd, endToTargetEffector); 
+        float dotSum = Vector3.Dot(baseToEnd, baseToEnd) + Vector3.Dot(baseToEnd, endToTargetEffector);  
+        float phi = Mathf.Atan2(crossProduct.magnitude, dotSum) * Mathf.Rad2Deg; 
 
-        baseJoint.rotation = Quaternion.LookRotation(shoulderToTargetDir, baseJoint.up);  
+        middleJoint.rotation = Quaternion.AngleAxis(180 - theta, middleRotationAxis) * baseJoint.rotation;  
+        baseJoint.rotation = Quaternion.AngleAxis(phi, baseRotationAxis) * baseJoint.rotation; 
 
-
+        // Debug lines to visualize arm positions
         Debug.DrawLine(baseJoint.position, middleJoint.position, Color.red);  
         Debug.DrawLine(middleJoint.position, endEffector.position, Color.blue);  
-        Debug.DrawLine(endEffector.position, target.position, Color.green);  // Hand to target
+        Debug.DrawLine(endEffector.position, target.position, Color.green); 
     }
 }
-
-
 
 
 
