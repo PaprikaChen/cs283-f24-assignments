@@ -4,6 +4,7 @@ public class TwoLinkController : MonoBehaviour
 {
     public Transform target; 
     public Transform endEffector;  
+    public Vector3 middleAxis;
 
     private Transform middleJoint; 
     private Transform baseJoint;  
@@ -34,18 +35,16 @@ public class TwoLinkController : MonoBehaviour
         float l2 = (endEffector.position - middleJoint.position).magnitude;
         float r = baseToEnd.magnitude;
 
-        Vector3 middleRotationAxis = Vector3.Cross(baseToMiddle, middleToTarget).normalized;
-
         Vector3 baseRotationAxis = Vector3.Cross(baseToEnd, endToTargetEffector).normalized;
 
         float cosTheta = Mathf.Clamp((l1 * l1 + l2 * l2 - r * r) / (2 * l1 * l2), -1f, 1f);
         float theta = Mathf.Acos(cosTheta) * Mathf.Rad2Deg; 
+        middleJoint.localRotation = Quaternion.AngleAxis(180 - theta, middleAxis);
 
         Vector3 crossProduct = Vector3.Cross(baseToEnd, endToTargetEffector); 
         float dotSum = Vector3.Dot(baseToEnd, baseToEnd) + Vector3.Dot(baseToEnd, endToTargetEffector);  
         float phi = Mathf.Atan2(crossProduct.magnitude, dotSum) * Mathf.Rad2Deg; 
 
-        middleJoint.rotation = Quaternion.AngleAxis(180 - theta, middleRotationAxis) * baseJoint.rotation;  
         baseJoint.rotation = Quaternion.AngleAxis(phi, baseRotationAxis) * baseJoint.rotation; 
 
         // Debug lines to visualize arm positions

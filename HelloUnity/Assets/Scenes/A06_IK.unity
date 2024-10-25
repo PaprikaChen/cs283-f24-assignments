@@ -377,6 +377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1499526877}
   endEffector: {fileID: 1557516137}
+  middleAxis: {x: -1, y: 0, z: 0}
 --- !u!1001 &1669757462
 PrefabInstance:
   m_ObjectHideFlags: 0
