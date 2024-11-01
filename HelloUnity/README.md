@@ -6,7 +6,8 @@ Paprika Chen
 This project is a low-poly 3D level designed in Unity. The level is divided into two main parts: the tram station where the character is born and a maze where the main activities occur.
 
 ## 2024/11/1 Updates:
-- Collection Game and Object Spawner:
+- Collection Game and Object Spawner :
+Video is with background music and sound effects:
 https://github.com/user-attachments/assets/91e61ae2-9bf3-4153-9218-9afe2678b644
 
 
