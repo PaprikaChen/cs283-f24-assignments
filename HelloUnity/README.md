@@ -5,11 +5,16 @@ Paprika Chen
 
 This project is a low-poly 3D level designed in Unity. The level is divided into two main parts: the tram station where the character is born and a maze where the main activities occur.
 
+## 2024/11/8 Updates:
+NevMesh and the wandering NPC:
+![HelloUnity - A09_Path - Windows, Mac, Linux - Unity 2022 3 28f1_ _DX11_ 2024-11-08 14-41-43](https://github.com/user-attachments/assets/7db83ecc-f13b-4585-8948-2ae3a731ea9d)
+
+
+
 ## 2024/11/1 Updates:
 - Collection Game and Object Spawner :
 Video is with background music and sound effects:
 https://github.com/user-attachments/assets/91e61ae2-9bf3-4153-9218-9afe2678b644
-
 
 
 
