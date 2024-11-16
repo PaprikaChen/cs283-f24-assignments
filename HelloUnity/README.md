@@ -10,12 +10,15 @@ This project is a low-poly 3D level designed in Unity. The level is divided into
 - NPC Settings:
 Currently having 3 Minions that will attack the player, and 1 tour guide that will give the player hint:
 the following shows the wandering and the position arrangements of all NPCs:
+
 ![c89bdbe4dbc96293efe2cda8004f075c](https://github.com/user-attachments/assets/248ee460-8150-4dc2-ae3c-0073be2a0614)
 
 BehaviorMinion.cs Behavior: Wander, follow and Attack the player:
+
 ![8bd9b8f62a439af99a171b606ff9151f](https://github.com/user-attachments/assets/8faddd79-c12e-4cc8-8441-fa96acfc1302)
 
 BehaviorUnique.cs Behavior: Wander and guide the player by giving hints:
+
 ![8bd9b8f62a439af99a171b606ff9151f](https://github.com/user-attachments/assets/b3ed5368-fea0-49b6-8a72-ec8b39472eef)
 
 - Home Area: the garden in the center of the maze.
