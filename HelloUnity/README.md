@@ -20,7 +20,7 @@ the following shows the wandering and the position arrangements of all NPCs:
   
  BehaviorMinion.cs Behavior: Wander, follow and Attack the player:
 
-![8bd9b8f62a439af99a171b606ff9151f](https://github.com/user-attachments/assets/8faddd79-c12e-4cc8-8441-fa96acfc1302)
+![6f24e9a78346979993d11f0ae11830aa](https://github.com/user-attachments/assets/6889b02f-8b2e-41c2-9805-b56d1632c93e)
 
 
 - Guide NPC:
