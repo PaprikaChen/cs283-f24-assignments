@@ -8,6 +8,7 @@ This project is a low-poly 3D level designed in Unity. The level is divided into
 
 ## 2024/11/15 Updates:
 - NPC Settings:
+  
 Currently having 3 Minions that will attack the player, and 1 tour guide that will give the player hint:
 the following shows the wandering and the position arrangements of all NPCs:
 
@@ -15,13 +16,15 @@ the following shows the wandering and the position arrangements of all NPCs:
 
 
 
-- Minoin NPC: 
+- Minoin NPC:
+  
  BehaviorMinion.cs Behavior: Wander, follow and Attack the player:
 
 ![8bd9b8f62a439af99a171b606ff9151f](https://github.com/user-attachments/assets/8faddd79-c12e-4cc8-8441-fa96acfc1302)
 
 
 - Guide NPC:
+  
   BehaviorUnique.cs Behavior: Wander and guide the player by giving hints:
 
 ![8bd9b8f62a439af99a171b606ff9151f](https://github.com/user-attachments/assets/b3ed5368-fea0-49b6-8a72-ec8b39472eef)
@@ -30,7 +33,7 @@ the following shows the wandering and the position arrangements of all NPCs:
 
 
 - Scripts Arrangements:
-- 
+
 For the convenience of arranging different status for all NPC for the final projects, where the situations may be complicated, I divided two scripts into multiple scripts to better control the work flow.
 | **Script**            | **Attached To**             | **Main Functionality**                                  |
 
