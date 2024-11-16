@@ -5,6 +5,31 @@ Paprika Chen
 
 This project is a low-poly 3D level designed in Unity. The level is divided into two main parts: the tram station where the character is born and a maze where the main activities occur.
 
+
+## 2024/11/15 Updates:
+- NPC Settings:
+Currently having 3 Minions that will attack the player, and 1 tour guide that will give the player hint:
+the following shows the wandering and the position arrangements of all NPCs:
+![c89bdbe4dbc96293efe2cda8004f075c](https://github.com/user-attachments/assets/248ee460-8150-4dc2-ae3c-0073be2a0614)
+
+BehaviorMinion.cs Behavior: Wander, follow and Attack the player:
+![8bd9b8f62a439af99a171b606ff9151f](https://github.com/user-attachments/assets/8faddd79-c12e-4cc8-8441-fa96acfc1302)
+
+BehaviorUnique.cs Behavior: Wander and guide the player by giving hints:
+![8bd9b8f62a439af99a171b606ff9151f](https://github.com/user-attachments/assets/b3ed5368-fea0-49b6-8a72-ec8b39472eef)
+
+- Home Area: the garden in the center of the maze.
+- Scripts: 
+For the convenience of arranging different status for all NPC for the final projects, where the situations may be complicated, I divided two scripts into multiple scripts to better control the work flow.
+| **Script**            | **Attached To**             | **Main Functionality**                                  |
+|-----------------------|-----------------------------|-------------------------------------------------------|
+| `AIStateMachine.cs`   | Not attached               | Defines state machine logic and state classes (used by other scripts). |
+| `BaseNPCBehavior.cs`  | Not attached               | Provides shared NPC logic (used as a base class for behavior scripts). |
+| `BehaviorUnique.cs`   | Guide NPC (`GuideNPC`)     | Defines Guide NPC's `Wander`, `Interact`, and `LookAt` behaviors.       |
+| `BehaviorMinion.cs`   | Enemy Minion (`Minion`)    | Defines Minion's `Wander`, `Attack`, `Follow`, and `Retreat` behaviors. |
+
+
+
 ## 2024/11/8 Updates:
 NevMesh and the wandering NPC:
 ![HelloUnity - A09_Path - Windows, Mac, Linux - Unity 2022 3 28f1_ _DX11_ 2024-11-08 14-41-43](https://github.com/user-attachments/assets/7db83ecc-f13b-4585-8948-2ae3a731ea9d)
