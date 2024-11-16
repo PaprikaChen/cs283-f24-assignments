@@ -143,22 +143,10 @@ public class AIInteract : AIState
     {
         base.Enter();
 
-        FacePlayer();
-
         entity.StartCoroutine(JumpAndSpin());
         dialogue1.SetActive(false);
     }
 
-    private void FacePlayer()
-    {
-        if (player == null) return;
-
-        Vector3 direction = (player.position - entity.transform.position).normalized;
-
-        direction.y = 0;
-
-        entity.transform.rotation = Quaternion.LookRotation(direction);
-    }
 
     private IEnumerator JumpAndSpin()
     {
@@ -184,7 +172,6 @@ public class AIInteract : AIState
 
         entity.StartCoroutine(ShowDialogueForDuration());
 
-        yield return new WaitForSeconds(5f);
 
         entity.transform.position = new Vector3(entity.transform.position.x, originalY, entity.transform.position.z);
         hasJumped = true;
