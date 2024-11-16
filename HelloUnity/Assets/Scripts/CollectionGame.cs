@@ -26,10 +26,23 @@ public class CollectionGame : MonoBehaviour
         }
     }
 
-
     private void UpdateUI()
     {
-        collectionCountText.text = "Caught: " + collectionCount;
+        if (collectionCount < 20)
+        {
+            collectionCountText.text = "Collect 20 Mushrooms! You collected " + collectionCount;
+        }
+        else
+        {
+            collectionCountText.text = "You won!";
+            StartCoroutine(WaitAndQuit());
+        }
+    }
+
+    private IEnumerator WaitAndQuit()
+    {
+        yield return new WaitForSeconds(3); 
+        Application.Quit();
     }
 
 }

@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Spawner : MonoBehaviour
 {
     public GameObject collectablePrefab; 
-    public float spawnRange = 5f;       
-    public int maxObjects = 10;     
+    public float spawnRange = 5f;     
+    public int maxObjects = 10;  
     private GameObject[] spawnedObjects; 
+    public float navMeshSampleRadius = 2f; 
 
     private void Start()
     {
@@ -30,10 +32,26 @@ public class Spawner : MonoBehaviour
 
     private void SpawnCollectable(int index)
     {
-        // Generate a random position within the spawn range
-        Vector3 randomPosition = GetRandomSpawnPosition();
+        Vector3 randomPosition;
 
-        // If this is the first spawn, instantiate a new object; otherwise, reposition an existing one
+
+        int maxAttempts = 10; 
+        int attempts = 0;
+        bool validPositionFound = false;
+        do
+        {
+            randomPosition = GetRandomSpawnPosition();
+            validPositionFound = TryGetPositionOnNavMesh(randomPosition, out randomPosition);
+            attempts++;
+        } 
+        while (!validPositionFound && attempts < maxAttempts);
+
+        if (!validPositionFound)
+        {
+            Debug.LogWarning("Could not find a valid position on the NavMesh after multiple attempts.");
+            return;
+        }
+
         if (spawnedObjects[index] == null)
         {
             spawnedObjects[index] = Instantiate(collectablePrefab, randomPosition, Quaternion.identity);
@@ -41,9 +59,10 @@ public class Spawner : MonoBehaviour
         else
         {
             spawnedObjects[index].transform.position = randomPosition;
-            spawnedObjects[index].transform.localScale = new Vector3(2,2,2);
             spawnedObjects[index].SetActive(true);
         }
+
+        spawnedObjects[index].transform.localScale = collectablePrefab.transform.localScale;
 
         PositionOnTerrain(spawnedObjects[index]);
     }
@@ -52,8 +71,19 @@ public class Spawner : MonoBehaviour
     {
         float randomX = Random.Range(-spawnRange, spawnRange);
         float randomZ = Random.Range(-spawnRange, spawnRange);
-        
         return new Vector3(randomX, 0, randomZ) + transform.position;
+    }
+
+    private bool TryGetPositionOnNavMesh(Vector3 position, out Vector3 navMeshPosition)
+    {
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(position, out hit, navMeshSampleRadius, NavMesh.AllAreas))
+        {
+            navMeshPosition = hit.position;
+            return true;
+        }
+        navMeshPosition = Vector3.zero;
+        return false;
     }
 
     private void PositionOnTerrain(GameObject collectable)
