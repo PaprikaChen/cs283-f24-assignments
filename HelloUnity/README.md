@@ -13,23 +13,37 @@ the following shows the wandering and the position arrangements of all NPCs:
 
 ![c89bdbe4dbc96293efe2cda8004f075c](https://github.com/user-attachments/assets/248ee460-8150-4dc2-ae3c-0073be2a0614)
 
-BehaviorMinion.cs Behavior: Wander, follow and Attack the player:
+
+
+- Minoin NPC: 
+ BehaviorMinion.cs Behavior: Wander, follow and Attack the player:
 
 ![8bd9b8f62a439af99a171b606ff9151f](https://github.com/user-attachments/assets/8faddd79-c12e-4cc8-8441-fa96acfc1302)
 
-BehaviorUnique.cs Behavior: Wander and guide the player by giving hints:
+
+- Guide NPC:
+  BehaviorUnique.cs Behavior: Wander and guide the player by giving hints:
 
 ![8bd9b8f62a439af99a171b606ff9151f](https://github.com/user-attachments/assets/b3ed5368-fea0-49b6-8a72-ec8b39472eef)
 
 - Home Area: the garden in the center of the maze.
-- Scripts: 
+
+
+- Scripts Arrangements:
+- 
 For the convenience of arranging different status for all NPC for the final projects, where the situations may be complicated, I divided two scripts into multiple scripts to better control the work flow.
 | **Script**            | **Attached To**             | **Main Functionality**                                  |
+
 |-----------------------|-----------------------------|-------------------------------------------------------|
+
 | `AIStateMachine.cs`   | Not attached               | Defines state machine logic and state classes (used by other scripts). |
+
 | `BaseNPCBehavior.cs`  | Not attached               | Provides shared NPC logic (used as a base class for behavior scripts). |
+
 | `BehaviorUnique.cs`   | Guide NPC (`GuideNPC`)     | Defines Guide NPC's `Wander`, `Interact`, and `LookAt` behaviors.       |
+
 | `BehaviorMinion.cs`   | Enemy Minion (`Minion`)    | Defines Minion's `Wander`, `Attack`, `Follow`, and `Retreat` behaviors. |
+
 
 
 
