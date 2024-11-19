@@ -62,7 +62,7 @@ public class Spawner : MonoBehaviour
             spawnedObjects[index].SetActive(true);
         }
 
-        spawnedObjects[index].transform.localScale = collectablePrefab.transform.localScale;
+        spawnedObjects[index].transform.localScale = new Vector3(2, 2, 2);
 
         PositionOnTerrain(spawnedObjects[index]);
     }

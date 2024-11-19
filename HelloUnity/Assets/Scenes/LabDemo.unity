@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1038,6 +1038,18 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 3867405638438772683, guid: bd252327a8fce0e46b1494c285988362, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.297
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867405638438772683, guid: bd252327a8fce0e46b1494c285988362, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.643
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867405638438772683, guid: bd252327a8fce0e46b1494c285988362, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 23.543
+      objectReference: {fileID: 0}
     - target: {fileID: 3878209221518351175, guid: bd252327a8fce0e46b1494c285988362, type: 3}
       propertyPath: m_TagString
       value: Untagged
@@ -1265,6 +1277,18 @@ PrefabInstance:
     - target: {fileID: 4576910981463092516, guid: bd252327a8fce0e46b1494c285988362, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576910981463453956, guid: bd252327a8fce0e46b1494c285988362, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -298.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576910981463453956, guid: bd252327a8fce0e46b1494c285988362, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -39.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576910981463453956, guid: bd252327a8fce0e46b1494c285988362, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 75.58
       objectReference: {fileID: 0}
     - target: {fileID: 4636460162045504455, guid: bd252327a8fce0e46b1494c285988362, type: 3}
       propertyPath: m_TagString
@@ -2039,7 +2063,8 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3175291979793224296, guid: bd252327a8fce0e46b1494c285988362, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4195942551667471496, guid: bd252327a8fce0e46b1494c285988362, type: 3}
@@ -3200,7 +3225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -960, y: 235}
+  m_AnchoredPosition: {x: -1067, y: 235}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1837826360 stripped
