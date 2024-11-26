@@ -32,23 +32,6 @@ the following shows the wandering and the position arrangements of all NPCs:
 - Home Area: the garden in the center of the maze.
 
 
-- Scripts Arrangements:
-
-For the convenience of arranging different status for all NPC for the final projects, where the situations may be complicated, I divided two scripts into multiple scripts to better control the work flow.
-| **Script**            | **Attached To**             | **Main Functionality**                                  |
-
-|-----------------------|-----------------------------|-------------------------------------------------------|
-
-| `AIStateMachine.cs`   | Not attached               | Defines state machine logic and state classes (used by other scripts). |
-
-| `BaseNPCBehavior.cs`  | Not attached               | Provides shared NPC logic (used as a base class for behavior scripts). |
-
-| `BehaviorUnique.cs`   | Guide NPC (`GuideNPC`)     | Defines Guide NPC's `Wander`, `Interact`, and `LookAt` behaviors.       |
-
-| `BehaviorMinion.cs`   | Enemy Minion (`Minion`)    | Defines Minion's `Wander`, `Attack`, `Follow`, and `Retreat` behaviors. |
-
-
-
 
 ## 2024/11/8 Updates:
 NevMesh and the wandering NPC:
