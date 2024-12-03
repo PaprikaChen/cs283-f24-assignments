@@ -65,6 +65,7 @@ public class BehaviorUnique : MonoBehaviour
         if (isInteracting || interactionComplete) return;
         isInteracting = true;
         isWandering = false;
+
         StartCoroutine(JumpAndShowDialogue());
         Debug.Log("Interacting with the player.");
     }
@@ -74,6 +75,8 @@ public class BehaviorUnique : MonoBehaviour
         float originalY = transform.position.y;
         float jumpTime = 0.5f;
         float elapsedTime = 0f;
+
+
 
         while (elapsedTime < jumpTime)
         {
@@ -87,7 +90,7 @@ public class BehaviorUnique : MonoBehaviour
         }
 
         dialogueBox1.SetActive(false);
-        dialogueBox2.text = "Try to reach the park at the heart of the maze...";
+        dialogueBox2.text = "Be careful at night... Head to the maze's center if you need a safe spot...";
 
         yield return new WaitForSeconds(6f);
 

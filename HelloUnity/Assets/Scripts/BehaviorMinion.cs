@@ -10,6 +10,7 @@ public class BehaviorMinion : MonoBehaviour
     public Transform firePoint; 
     public float attackRange = 4f; 
     public Transform wanderRange; 
+    public bool isNight = false;
     private UnityEngine.AI.NavMeshAgent agent; // NavMeshAgent
 
     private bool isAttacking = false; 
@@ -17,6 +18,7 @@ public class BehaviorMinion : MonoBehaviour
     private bool isWandering = false;
     private bool isRetreating = false;
     private Root ai; 
+
 
     void Start()
     {
@@ -37,7 +39,8 @@ public class BehaviorMinion : MonoBehaviour
                 BT.Sequence().OpenBranch(
                     BT.Condition(() => player != null 
                                       && Vector3.Distance(transform.position, player.position) <= attackRange 
-                                      && !isAttacking),
+                                      && !isAttacking
+                                      && isNight),
                     BT.Call(() => Attack())
                 ),
                 BT.Sequence().OpenBranch(
@@ -101,9 +104,11 @@ public class BehaviorMinion : MonoBehaviour
     {
         if (player != null)
         {
-            Debug.Log("Following the player.");
-            isWandering = false;
-            agent.SetDestination(player.position);
+            Vector3 directionToPlayer = (player.position - transform.position).normalized;
+
+            Vector3 targetPosition = player.position - directionToPlayer * 1.5f;
+
+            agent.SetDestination(targetPosition);
         }
     }
 
