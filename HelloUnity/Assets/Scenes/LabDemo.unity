@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37312242, g: 0.3807421, b: 0.35872674, a: 1}
+  m_IndirectSpecularColor: {r: 0.37312207, g: 0.38074186, b: 0.3587264, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -202,8 +202,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '''esc'' to exit'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2826,7 +2826,7 @@ MonoBehaviour:
   homeArea: {fileID: 1837826360}
   ghostFirePrefab: {fileID: 3086347216259454352, guid: b0edf94179c61d143bc0eb3299d602a2, type: 3}
   firePoint: {fileID: 1020893817}
-  attackRange: 4
+  attackRange: 6
   wanderRange: {fileID: 143568621}
   isNight: 0
 --- !u!1001 &997383896
@@ -2939,7 +2939,7 @@ MonoBehaviour:
   homeArea: {fileID: 1837826360}
   ghostFirePrefab: {fileID: 3086347216259454352, guid: b0edf94179c61d143bc0eb3299d602a2, type: 3}
   firePoint: {fileID: 1647357425}
-  attackRange: 4
+  attackRange: 6
   wanderRange: {fileID: 360219439}
   isNight: 0
 --- !u!1001 &1068190930
@@ -3816,7 +3816,7 @@ MonoBehaviour:
   homeArea: {fileID: 1837826360}
   ghostFirePrefab: {fileID: 3086347216259454352, guid: b0edf94179c61d143bc0eb3299d602a2, type: 3}
   firePoint: {fileID: 1007777163}
-  attackRange: 4
+  attackRange: 6
   wanderRange: {fileID: 223084658}
   isNight: 0
 --- !u!1 &2083309445 stripped

@@ -78,40 +78,37 @@ public class DayNightCycle : MonoBehaviour
     {
         float normalizedTime = currentTime;
 
-        // 日出和日落颜色
-        Color sunriseColor = new Color(0.9f, 0.7f, 0.2f); // 日出橙色
-        Color middayColor = Color.white; // 白天白色
-        Color sunsetColor = new Color(0.9f, 0.7f, 0.2f); // 日落橙色
+        Color sunriseColor = new Color(0.9f, 0.7f, 0.2f); 
+        Color middayColor = Color.white;
+        Color sunsetColor = new Color(0.9f, 0.7f, 0.2f); 
 
-        if (normalizedTime <= 0.25f) // 日出
+        if (normalizedTime <= 0.25f)
         {
             float t = normalizedTime / 0.25f;
             sun.color = Color.Lerp(sunriseColor, middayColor, t);
-            sun.intensity = Mathf.Lerp(0.4f, 1f, t);
-            nightLight.intensity = Mathf.Lerp(0.8f, 0f, t); // 夜晚光逐渐减弱
+            sun.intensity = Mathf.Lerp(0.2f, 1f, t);
+            nightLight.intensity = Mathf.Lerp(0.8f, 0f, t); 
         }
-        else if (normalizedTime <= 0.5f) // 白天
+        else if (normalizedTime <= 0.5f) 
         {
             float t = (normalizedTime - 0.25f) / 0.25f;
             sun.color = middayColor;
-            sun.intensity = 1f;
-            nightLight.intensity = 0f; // 白天光为 0
+            sun.intensity = Mathf.Lerp(1f, 0.2f, t);
+            sun.color = Color.Lerp(middayColor, sunsetColor, t);
+            nightLight.intensity = 0f; 
         }
-        else if (normalizedTime <= 0.75f) // 日落
+        else if (normalizedTime <= 0.75f) 
         {
             float t = (normalizedTime - 0.5f) / 0.25f;
-            sun.color = Color.Lerp(middayColor, sunsetColor, t);
-            sun.intensity = Mathf.Lerp(1f, 0.4f, t);
-            nightLight.intensity = Mathf.Lerp(0f, 0.8f, t); // 夜晚光逐渐增强
+            nightLight.intensity = Mathf.Lerp(0f, 0.8f, t); 
         }
 
     }
 
 void HandleAmbientLight()
     {
-        // 动态调整环境光
-        Color nightAmbientColor = new Color(0.05f, 0.1f, 0.8f); // 夜晚深蓝
-        Color dayAmbientColor = new Color(0.9f, 0.9f, 0.8f);   // 白天柔和白色
+        Color nightAmbientColor = new Color(0.05f, 0.1f, 0.8f); 
+        Color dayAmbientColor = new Color(0.9f, 0.9f, 0.8f);  
 
         if (currentTime <= 0.5f)
         {
@@ -124,7 +121,6 @@ void HandleAmbientLight()
             RenderSettings.ambientLight = Color.Lerp(dayAmbientColor, nightAmbientColor, t);
         }
 
-        // 更新怪物是否活跃
         bool isNightNow = currentTime > 0.5f;
         if (isNightNow != isCurrentlyNight)
         {
