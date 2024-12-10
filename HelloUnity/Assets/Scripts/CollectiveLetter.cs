@@ -1,25 +1,25 @@
 using System.Collections;
 using UnityEngine;
 
-public class DisappearEffect : MonoBehaviour
+public class CollectiveLetter : MonoBehaviour
 {
-    public float animationDuration = 2f;
-    public Vector3 targetScale = new Vector3(0.2f, 0.2f, 0.2f);
-    public float rotationAngle = 180f;
-    public float height = 3f;
-    public float rotationSpeed = 50f; 
-    public int healAmount = 1; 
+    public float animationDuration = 2f; // 动画持续时间
+    public Vector3 targetScale = new Vector3(0.2f, 0.2f, 0.2f); // 缩放目标
+    public float rotationAngle = 180; // 旋转角度
+    public float height = 3f; // 上升高度
+    public float rotationSpeed = 50f; // 每秒旋转速度
 
-    private AudioSource audioSource;
-    private bool isBeingCollected = false; 
+    private AudioSource audioSource; // 声音组件
+    public LetterUI letterUI; // 引用 LetterUI 脚本
+    private bool isBeingCollected = false; // 是否正在被拾取
 
     public void RunPickupAnimation()
     {
         if (audioSource != null)
         {
-            audioSource.Play(); 
+            audioSource.Play(); // 播放拾取音效
         }
-        isBeingCollected = true; 
+        isBeingCollected = true; // 标记为正在被拾取
         StartCoroutine(PickupAnimationCoroutine());
     }
 
@@ -47,22 +47,15 @@ public class DisappearEffect : MonoBehaviour
         transform.localScale = targetScale;
         transform.rotation = endRotation;
 
-        gameObject.SetActive(false);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        // 更新信件内容并显示新信件
+        if (letterUI != null)
         {
-            HealthSystem healthSystem = other.GetComponent<HealthSystem>();
-            if (healthSystem != null)
-            {
-                Debug.Log($"Player healed by {healAmount}. Current health: {healthSystem.currentHealth}");
-                healthSystem.Heal(healAmount); 
-            }
-
-            RunPickupAnimation(); 
+            letterUI.UpdateLetterIndex(letterUI.currentLetterIndex + 1);
+            letterUI.ToggleLetter();
         }
+
+        // 隐藏对象
+        gameObject.SetActive(false);
     }
 
     void Start()
@@ -76,6 +69,14 @@ public class DisappearEffect : MonoBehaviour
         if (!isBeingCollected)
         {
             transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.World);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            RunPickupAnimation(); // 播放拾取动画
         }
     }
 }

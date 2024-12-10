@@ -151,6 +151,7 @@ MonoBehaviour:
   firePoint: {fileID: 1046576834}
   attackRange: 4
   wanderRange: {fileID: 1179824505}
+  isNight: 0
 --- !u!4 &620858853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2934188858666743392, guid: b612857a903556b42864bf14ee023e8e, type: 3}
@@ -239,6 +240,7 @@ MonoBehaviour:
   firePoint: {fileID: 1581523632}
   attackRange: 4
   wanderRange: {fileID: 31897510}
+  isNight: 0
 --- !u!1 &1852194706 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1312758215609778679, guid: 02e34516a6432b04885a859f3d93c4a2, type: 3}
@@ -267,6 +269,7 @@ MonoBehaviour:
   firePoint: {fileID: 2027035789}
   attackRange: 4
   wanderRange: {fileID: 1069190082}
+  isNight: 0
 --- !u!4 &2027035789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6675481392995999043, guid: 1cbdb334c4cafa446b9e0d64fb287964, type: 3}
@@ -1252,6 +1255,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1832483813220023418, guid: 0b21c61570add654f9854aa6561dc470, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2388118593764921633, guid: 0b21c61570add654f9854aa6561dc470, type: 3}
       propertyPath: m_Name
       value: PickUpMushroom

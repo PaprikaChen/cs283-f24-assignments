@@ -4,12 +4,11 @@ using System.Collections;
 
 public class CollectionGame : MonoBehaviour
 {
-    public TextMeshProUGUI collectionCountText; 
      private int collectionCount = 0; 
 
     private void Start()
     {
-        UpdateUI(); 
+        //UpdateUI(); 
     }
 
     private void OnTriggerEnter(Collider other)
@@ -17,7 +16,7 @@ public class CollectionGame : MonoBehaviour
         if (other.CompareTag("Collectable"))
         {
             collectionCount++;
-            UpdateUI(); 
+            //UpdateUI(); 
 
             DisappearEffect collectable = other.GetComponent<DisappearEffect>();
             if (collectable != null) {
@@ -26,18 +25,18 @@ public class CollectionGame : MonoBehaviour
         }
     }
 
-    private void UpdateUI()
-    {
-        if (collectionCount < 20)
-        {
-            collectionCountText.text = "Collect 20 Mushrooms! You collected " + collectionCount;
-        }
-        else
-        {
-            collectionCountText.text = "You won!";
-            StartCoroutine(WaitAndQuit());
-        }
-    }
+    // private void UpdateUI()
+    // {
+    //     if (collectionCount < 20)
+    //     {
+    //         collectionCountText.text = "Collect 20 Mushrooms! You collected " + collectionCount;
+    //     }
+    //     else
+    //     {
+    //         collectionCountText.text = "You won!";
+    //         StartCoroutine(WaitAndQuit());
+    //     }
+    // }
 
     private IEnumerator WaitAndQuit()
     {

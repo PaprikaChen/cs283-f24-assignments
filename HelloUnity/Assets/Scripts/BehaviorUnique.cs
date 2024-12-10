@@ -10,10 +10,13 @@ public class BehaviorUnique : MonoBehaviour
     public float interactDistance = 2f;
     public GameObject dialogueBox1;
     public TextMeshProUGUI dialogueBox2;
+    public GameObject background;
+
     public float jumpHeight = 2f;
     public float rotationSpeed = 360f;
     private UnityEngine.AI.NavMeshAgent agent;
     public Transform wanderRange;
+    public GameObject lettericon;
 
     private bool interactionComplete = false;
     private bool isInteracting = false; 
@@ -47,6 +50,14 @@ public class BehaviorUnique : MonoBehaviour
             )
         ) as Root; 
         dialogueBox1.SetActive(true); 
+        dialogueBox2.gameObject.SetActive(false);
+        if (background != null) {
+            background.SetActive(false);
+        }
+
+        if (lettericon != null) {
+            lettericon.SetActive(false);
+        }
     }
 
 
@@ -72,11 +83,13 @@ public class BehaviorUnique : MonoBehaviour
 
     private IEnumerator JumpAndShowDialogue()
     {
+        if (lettericon != null) {
+            lettericon.SetActive(true);
+        }
+
         float originalY = transform.position.y;
         float jumpTime = 0.5f;
         float elapsedTime = 0f;
-
-
 
         while (elapsedTime < jumpTime)
         {
@@ -90,11 +103,17 @@ public class BehaviorUnique : MonoBehaviour
         }
 
         dialogueBox1.SetActive(false);
-        dialogueBox2.text = "Be careful at night... Head to the maze's center if you need a safe spot...";
+        dialogueBox2.gameObject.SetActive(true);
+        if (background != null) {
+            background.SetActive(true);
+        }
 
         yield return new WaitForSeconds(6f);
 
         dialogueBox2.text = "";
+        if (background != null) {
+            background.SetActive(false);
+        }
 
         interactionComplete = true;
         isInteracting = false;

@@ -34,31 +34,36 @@ public class BehaviorMinion : MonoBehaviour
             Debug.LogError("One or more required references are missing. Please assign player, wanderRange, and homeArea in the Inspector.");
             return;
         }
-        ai = BT.Root().OpenBranch(
-            BT.Selector().OpenBranch(
-                BT.Sequence().OpenBranch(
-                    BT.Condition(() => player != null 
-                                      && Vector3.Distance(transform.position, player.position) <= attackRange 
-                                      && !isAttacking
-                                      && isNight),
-                    BT.Call(() => Attack())
-                ),
-                BT.Sequence().OpenBranch(
-                    BT.Condition(() => isFollowing 
-                                      && Vector3.Distance(player.position, homeArea.position) > homeArea.localScale.x / 2),
-                    BT.Call(() => FollowPlayer())
-                ),
-                BT.Sequence().OpenBranch(
-                    BT.Condition(() => isFollowing 
-                                      && Vector3.Distance(player.position, homeArea.position) <= homeArea.localScale.x / 2),
-                    BT.Call(() => StopFollowing())
-                ),
-                BT.Sequence().OpenBranch(
-                    BT.Condition(() => !isAttacking && !isFollowing && !isRetreating),
-                    BT.Call(() => Wander())
-                )
-            )
-        ) as Root; 
+ai = BT.Root().OpenBranch(
+    BT.Selector().OpenBranch(
+        BT.Sequence().OpenBranch(
+            BT.Condition(() => player != null 
+                              && Vector3.Distance(transform.position, player.position) <= attackRange 
+                              && !isAttacking
+                              && isNight),
+            BT.Call(() => Attack())
+        ),
+        BT.Sequence().OpenBranch(
+            BT.Condition(() => isNight 
+                              && isFollowing 
+                              && Vector3.Distance(player.position, homeArea.position) > homeArea.localScale.x / 2),
+            BT.Call(() => FollowPlayer())
+        ),
+        BT.Sequence().OpenBranch(
+            BT.Condition(() => isFollowing 
+                              && (!isNight 
+                                  || Vector3.Distance(player.position, homeArea.position) <= homeArea.localScale.x / 2)),
+            BT.Call(() => StopFollowing())
+        ),
+        BT.Sequence().OpenBranch(
+            BT.Condition(() => !isAttacking && !isFollowing && !isRetreating),
+            BT.Call(() => Wander())
+        )
+    )
+) as Root;
+
+
+
     }
 
     void Update()
@@ -73,32 +78,42 @@ public class BehaviorMinion : MonoBehaviour
         isWandering = false;
         StartCoroutine(AttackRoutine());
     }
-
     private IEnumerator AttackRoutine()
     {
         Debug.Log("Attacking the player!");
-        yield return new WaitForSeconds(1f); 
+        yield return new WaitForSeconds(0.5f); // 等待攻击前的准备时间
 
+        // 确保有火球Prefab和发射点
         if (ghostFirePrefab != null && firePoint != null)
         {
+            // 实例化火球Prefab
             GameObject ghostFire = Instantiate(ghostFirePrefab, firePoint.position, Quaternion.identity);
 
-            Vector3 direction = (player.position - firePoint.position).normalized;
+            Vector3 direction = (player.position - firePoint.position);
+            direction.y = 0; // 忽略Y轴的高度差
+            direction = direction.normalized; // 重新归一化
+
+
+            // 使火球朝向玩家的方向（忽略Y轴差异，让火球保持水平移动）
             ghostFire.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
 
+            // 添加刚体速度，让火球飞向玩家
             Rigidbody rb = ghostFire.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.velocity = direction * 10f; 
+                rb.velocity = direction * 10f; // 设置火球速度
             }
 
-            Destroy(ghostFire, 3f); 
+            // 3秒后销毁火球
+            Destroy(ghostFire, 3f);
         }
 
+        // 等待攻击冷却时间
         yield return new WaitForSeconds(2f); 
-        isAttacking = false;
-        isFollowing = true; 
+        isAttacking = false; // 攻击结束
+        isFollowing = true;  // 恢复跟随玩家
     }
+
 
     private void FollowPlayer()
     {
