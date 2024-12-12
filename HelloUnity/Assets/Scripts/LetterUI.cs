@@ -3,75 +3,69 @@ using TMPro;
 
 public class LetterUI : MonoBehaviour
 {
-    public GameObject[] letters; // 信件UI对象的数组
-    public int currentLetterIndex = 0; // 当前显示的信件索引
+    public GameObject[] letters; 
+    public int currentLetterIndex = 0; 
 
-    private bool isLetterOpen = false; // 当前信件是否打开
+    private bool isLetterOpen = false; 
 
     public TextMeshProUGUI letterText;
 
     void Start()
     {
-        // 检查信件数组是否初始化
         if (letters == null || letters.Length == 0)
         {
-            Debug.LogError("letters 数组未初始化或为空！");
+            Debug.LogError("letters are not initialized!");
             return;
         }
 
-        // 遍历数组，确保所有信件对象都不可见
         foreach (GameObject letterUI in letters)
         {
             if (letterUI == null)
             {
-                Debug.LogError("letters 数组中存在未赋值的元素！");
+                Debug.LogError("letters are not initialized!");
             }
             else
             {
                 letterUI.SetActive(false);
-                Debug.Log($"信件 {letterUI.name} 已设置为不可见");
+                Debug.Log($"Letter {letterUI.name} is now invisible");
             }
         }
     }
 
-    // 切换信件的显示状态
     public void ToggleLetter()
     {
         if (letters == null || letters.Length == 0)
         {
-            Debug.LogWarning("ToggleLetter 被调用，但 letters 数组为空！");
+            Debug.LogWarning("ToggleLetter is empty");
             return;
         }
 
         if (letters[currentLetterIndex] == null)
         {
-            Debug.LogWarning($"当前索引 {currentLetterIndex} 对应的信件为空！");
+            Debug.LogWarning($"Letter {currentLetterIndex} is empty");
             return;
         }
 
         if (isLetterOpen)
         {
-            // 关闭当前信件
             letters[currentLetterIndex].SetActive(false);
             isLetterOpen = false;
-            Debug.Log($"信件 {letters[currentLetterIndex].name} 已关闭");
+            Debug.Log($"Letter{letters[currentLetterIndex].name} is closed");
         }
         else
         {
-            // 打开当前信件
             letters[currentLetterIndex].SetActive(true);
             isLetterOpen = true;
-            Debug.Log($"信件 {letters[currentLetterIndex].name} 已打开");
+            Debug.Log($"Letter{letters[currentLetterIndex].name} is open");
         }
     }
 
-    // 更新信件索引
     public void UpdateLetterIndex(int newIndex)
     {
         if (newIndex >= 0 && newIndex < letters.Length)
         {
             currentLetterIndex = newIndex;
-            Debug.Log($"当前信件索引更新为 {currentLetterIndex}");
+            Debug.Log($"The current letter index is {currentLetterIndex}");
             if (letterText != null)
             {
                 letterText.text = $"({currentLetterIndex}/{letters.Length - 1})";
@@ -79,13 +73,12 @@ public class LetterUI : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"无效的信件索引：{newIndex}");
+            Debug.LogWarning($"not valid index{newIndex}");
         }
     }
 
     void Update()
     {
-        // 按下空格键时，切换信件的显示状态
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ToggleLetter();

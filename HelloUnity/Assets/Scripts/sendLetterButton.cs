@@ -31,24 +31,20 @@ public class sendLetterButton : MonoBehaviour
 
     public void OnButtonClick()
     {
-        // 获取 LetterUI 脚本并读取 currentLetterIndex 的值
         LetterUI letterUI = LetterButton.GetComponent<LetterUI>();
 
         if (letterUI != null)
         {
-            // 判断 currentLetterIndex 是否为 5
             if (letterUI.currentLetterIndex == 5)
             {
                 if (player != null && endingPic != null && LetterButton != null)
                 {
-                    // 执行动作
                     gameObject.SetActive(false);
                     endingPic.SetActive(true);
                     MomCharacter.SetActive(true);
                 }
                 else
                 {
-                    // 检查是否有未分配的对象
                     if (player == null)
                         Debug.LogWarning("Player is not assigned!");
                     if (endingPic == null)
