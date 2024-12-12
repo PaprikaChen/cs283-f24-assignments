@@ -5,12 +5,11 @@ Paprika Chen
 This is a heartfelt adventure game where you play as Julian, a 22-year-old courier in heaven delivering fragmented messages from the living to souls in paradise. Navigate a magical maze filled with dangers, piece together lost letters, and uncover the emotional stories behind each sender and recipient. 
 
 ## 2024/12/12 Updates (final version):
-- **Health System**:
-  
-  The player has 4 hearts initially, and will lose 1 heart if being hit by the fireball from the ghost, can recover 1 heart if collecting a mushroom.
-  If the player is dead, they will be reborn at the start of the maze.
-  UI: shows and updates the current heart count simultaneously.
+- **Day Night Cycle**:
 
+  Implements the day-night cycle, sunrise/midday/sunset/night 4 status interpolate smoothly by changing the ambient color/intensity, light color/intensity/position/direction.
+  DayNightCycle.cs
+  
 - **Guide NPCs**:
   
   The guide NPCs will react when the player is approaching and prompt a dialogue to guide the player to the next destination.
@@ -21,6 +20,15 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
   When attack (by fireballs), there is sound effect to notice the player, because player may be in the middle of reading a letter.
   The Minion will not really run into the player (overlap), but keep one step away for the purpose of attacking and clear view.
   The Minion will stop attacking/following when it is during the daytime/the player returns to the home area.
+
+- **Health System**:
+  
+  The player has 4 hearts initially, and will lose 1 heart if being hit by the fireball from the ghost, can recover 1 heart if collecting a mushroom.
+  If the player is dead, they will be reborn at the start of the maze.
+  UI: shows and updates the current heart count simultaneously.
+  Health System: HealthSystem.cs  Has public update heart functions, also handles updating heart UI and die functions(returning to the reborn spot)
+  Attacked: AttackTrigger.cs      performs 1 heart damage when the fireball is collided into the player
+   
 
 - **Bus Transportation with Button**:
   
