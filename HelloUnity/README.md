@@ -9,25 +9,33 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
 ## Updates (2024/12/12 - Final Version)
 
 ### **Canvas Control**
+![CanvasControl](https://github.com/user-attachments/assets/28c31b9e-c505-4dc2-95dd-56054a95e290)
+
 - **Description**: Manages multiple canvases for the starting pages of the game.
 - **Script**: [`CanvasController.cs`](Assets/Scripts/CanvasController.cs)
 
 ---
 
 ### **Day-Night Cycle**
+![daynight](https://github.com/user-attachments/assets/795d45c3-d41d-4499-8611-12f43cc2b496)
+
 - **Description**: Smoothly transitions between four time states: sunrise, midday, sunset, and night. Adjusts ambient light color/intensity and the position, direction, and color of the main light source.
 - **Script**: [`DayNightCycle.cs`](Assets/Scripts/DayNightCycle.cs)
 
 ---
 
 ### **Guide NPCs**
+![guideNPC](https://github.com/user-attachments/assets/361d4153-33de-41b2-a588-5f1b0ecfd8ef)
+
 - **Description**: Guide NPCs react to the player's approach, initiate a dialogue to guide them to the next destination, and then watch the player.
 - **Script**: [`BehaviorUnique.cs`](Assets/Scripts/BehaviorUnique.cs)
 
 ---
 
 ### **Minion NPCs**
-- **Light Control**:  
+- **Light Control**:
+  ![ghostlight](https://github.com/user-attachments/assets/3a75778f-ded2-4386-9f5e-b6bdbdc5fe9b)
+
   - **Description**: Ghosts emit light and shadow during the night to indicate danger.  
   - **Script**: [`LightController.cs`](Assets/Scripts/LightController.cs)
   
@@ -43,8 +51,12 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
 ### **Health System**
 - **Description**:  
   - Players start with 4 hearts.  
-  - Lose 1 heart when hit by a fireball.  
-  - Recover 1 heart by collecting mushrooms.  
+  - Lose 1 heart when hit by a fireball.
+    ![health_attack](https://github.com/user-attachments/assets/326ea35d-b935-4ae1-abf4-ee93a5e84f98)
+
+  - Recover 1 heart by collecting mushrooms.
+    ![health_heal](https://github.com/user-attachments/assets/43b9b6f9-532a-4146-84a0-1ab845e00c67)
+
   - Death triggers respawn at the maze's starting point.
     ![reborn](https://github.com/user-attachments/assets/bb045750-3b1f-4ed0-af45-66198c3b5be9)
 
@@ -58,6 +70,8 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
 ---
 
 ### **Bus Transportation with Button**
+![Bus](https://github.com/user-attachments/assets/d018994f-b5e4-42f4-89a3-f730c7a49653)
+
 - **Description**:  
   - When near a bus stop, a button appears, allowing the player to teleport to the maze stop by clicking it.  
 - **Scripts**:  
@@ -67,6 +81,8 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
 ---
 
 ### **Collect Letter Fragments**
+![collectLetter](https://github.com/user-attachments/assets/a7fd3608-ae03-46cd-b000-b73c10768f1e)
+
 - **Description**:  
   - Collect 5 rotating, glowing letter fragments.  
   - Each fragment disappears with an animation upon collection, and its content is revealed.  
@@ -76,6 +92,7 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
 ---
 
 ### **Letter Button to Check Content Anytime**
+ ![toggleLetter](https://github.com/user-attachments/assets/6634820c-10de-4ace-9332-a66aab2737ea)
 - **Description**:  
   - Clicking the letter button or pressing SPACE toggles the display of the most recent letter content.  
   - The letter UI can be hidden using the same controls.  
@@ -86,6 +103,7 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
 ---
 
 ### **Deliver the Complete Letter**
+  ![sendLetter](https://github.com/user-attachments/assets/2f532419-f0d1-4427-8870-5c7103599b00)
 - **Description**:  
   - A button appears near the mailbox, allowing the player to send the letter if all 5 fragments are collected.  
   - Upon sending, the final letter content is displayed, and a hidden NPC appears, signaling the game's conclusion.  
