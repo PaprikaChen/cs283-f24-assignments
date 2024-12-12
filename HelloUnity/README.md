@@ -1,9 +1,47 @@
-# HW3
+# Game: Heaven's Postman
 Paprika Chen
 
-## Overview
+## Description
+This is a heartfelt adventure game where you play as Julian, a 22-year-old courier in heaven delivering fragmented messages from the living to souls in paradise. Navigate a magical maze filled with dangers, piece together lost letters, and uncover the emotional stories behind each sender and recipient. 
 
-This project is a low-poly 3D level designed in Unity. The level is divided into two main parts: the tram station where the character is born and a maze where the main activities occur.
+## 2024/12/12 Updates (final version):
+- **Health System**:
+  
+  The player has 4 hearts initially, and will lose 1 heart if being hit by the fireball from the ghost, can recover 1 heart if collecting a mushroom.
+  If the player is dead, they will be reborn at the start of the maze.
+  UI: shows and updates the current heart count simultaneously.
+
+- **Guide NPCs**:
+  
+  The guide NPCs will react when the player is approaching and prompt a dialogue to guide the player to the next destination.
+
+- **Minion NPCs**:
+  
+  At night, the ghosts will start casting light and shadow to show that they are dangerous right now.
+  When attack (by fireballs), there is sound effect to notice the player, because player may be in the middle of reading a letter.
+  The Minion will not really run into the player (overlap), but keep one step away for the purpose of attacking and clear view.
+  The Minion will stop attacking/following when it is during the daytime/the player returns to the home area.
+
+- **Bus Transportation with Button**:
+  
+  When the player approaches the bus stop, there will be a pop up button on the screen showing that the player can click to take the bus and transport to the maze stop.
+  When clicked, the player will be send to the maze stop.
+
+- **Collect letter fragments**:
+  
+  There are 5 fragments featuring by rotating letter with shining light. When collected, they will disappear with a disappear animation, and then show the new fragment content.
+  The progress will also be updated.
+
+- **Letter Button to check letter content anytime**:
+  
+  There is a letter button that when clicked will show the latest letter content, and the player can close the letter by either hit the button again/space.
+
+- **Deliver the complete letter**:
+  
+  When the player approaches the mailbox, there will be a pop up button saying that you can click to send the letter. But it will only be clicked when all 5 fragments are collected.
+  When clicked successfully, the final letter content will show, and the hidden NPC will also appears to meet the player. This also indicates the game is finished.
+
+
 
 
 ## 2024/11/15 Updates:
