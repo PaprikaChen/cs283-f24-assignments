@@ -87,7 +87,7 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
 - **Description**:  
   - A button appears near the mailbox, allowing the player to send the letter if all 5 fragments are collected.  
   - Upon sending, the final letter content is displayed, and a hidden NPC appears, signaling the game's conclusion.  
-- **Script**: [`SendLetterButton.cs`](Assets/Scripts/SendLetterButton.cs)
+- **Script**: [`SendLetterButton.cs`](Assets/Scripts/sendLetterButton.cs)
 
 ---
 
