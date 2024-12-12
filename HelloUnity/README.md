@@ -45,7 +45,9 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
   - Players start with 4 hearts.  
   - Lose 1 heart when hit by a fireball.  
   - Recover 1 heart by collecting mushrooms.  
-  - Death triggers respawn at the maze's starting point.  
+  - Death triggers respawn at the maze's starting point.
+    ![reborn](https://github.com/user-attachments/assets/bb045750-3b1f-4ed0-af45-66198c3b5be9)
+
   - A UI displays and updates the heart count in real-time.
   
 - **Scripts**:  
@@ -98,7 +100,6 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
 - **Script**: [`GameQuitHandler.cs`](Assets/Scripts/GameQuitHandler.cs)
 
   
-
 
 ## 2024/11/15 Updates:
 - NPC Settings:
