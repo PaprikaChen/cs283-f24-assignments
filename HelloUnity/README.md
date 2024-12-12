@@ -98,7 +98,7 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
   - The letter UI can be hidden using the same controls.  
 - **Scripts**:  
   - [`LetterUI.cs`](Assets/Scripts/LetterUI.cs): Handles letter display toggling.  
-  - [`ShowSendLetterButton.cs`](Assets/Scripts/ShowSendLetterButton.cs): Displays the button when the player is near the mailbox.
+
 
 ---
 
@@ -108,6 +108,7 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
   - A button appears near the mailbox, allowing the player to send the letter if all 5 fragments are collected.  
   - Upon sending, the final letter content is displayed, and a hidden NPC appears, signaling the game's conclusion.  
 - **Script**: [`SendLetterButton.cs`](Assets/Scripts/sendLetterButton.cs)
+ - [`ShowSendLetterButton.cs`](Assets/Scripts/ShowSendLetterButton.cs): Displays the button when the player is near the mailbox.
 
 ---
 
