@@ -6,8 +6,6 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
 
 # Game Features Documentation
 
-# Game Features Documentation
-
 ## Updates (2024/12/12 - Final Version)
 
 ### **Canvas Control**
