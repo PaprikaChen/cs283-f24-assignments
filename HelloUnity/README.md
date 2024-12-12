@@ -4,52 +4,99 @@ Paprika Chen
 ## Description
 This is a heartfelt adventure game where you play as Julian, a 22-year-old courier in heaven delivering fragmented messages from the living to souls in paradise. Navigate a magical maze filled with dangers, piece together lost letters, and uncover the emotional stories behind each sender and recipient. 
 
-## 2024/12/12 Updates (final version):
-- **Day Night Cycle**:
+# Game Features Documentation
 
-  Implements the day-night cycle, sunrise/midday/sunset/night 4 status interpolate smoothly by changing the ambient color/intensity, light color/intensity/position/direction.
-  DayNightCycle.cs
+## Updates (2024/12/12 - Final Version)
+
+### **Canvas Control**
+- **Description**: Manages multiple canvases for the starting pages of the game.
+- **Script**: `CanvasController.cs`
+
+---
+
+### **Day-Night Cycle**
+- **Description**: Smoothly transitions between four time states: sunrise, midday, sunset, and night. Adjusts ambient light color/intensity and the position, direction, and color of the main light source.
+- **Script**: `DayNightCycle.cs`
+
+---
+
+### **Guide NPCs**
+- **Description**: Guide NPCs react to the player's approach, initiate a dialogue to guide them to the next destination, and then watch the player.
+- **Script**: `BehaviorUnique.cs`
+
+---
+
+### **Minion NPCs**
+- **Light Control**:  
+  - **Description**: Ghosts emit light and shadow during the night to indicate danger.  
+  - **Script**: `LightController.cs`
   
-- **Guide NPCs**:
+- **Behavior**:  
+  - **Description**:  
+    - Attack with fireballs, accompanied by sound effects to alert the player (useful if the player is reading a letter).  
+    - Maintain distance from the player during attacks for visibility.  
+    - Cease attacks and following behavior during the daytime or when the player returns to the home area.  
+  - **Script**: `BehaviorMinion.cs`
+
+---
+
+### **Health System**
+- **Description**:  
+  - Players start with 4 hearts.  
+  - Lose 1 heart when hit by a fireball.  
+  - Recover 1 heart by collecting mushrooms.  
+  - Death triggers respawn at the maze's starting point.  
+  - A UI displays and updates the heart count in real-time.
   
-  The guide NPCs will react when the player is approaching and prompt a dialogue to guide the player to the next destination.
+- **Scripts**:  
+  - `HealthSystem.cs`: Handles heart updates, UI changes, and respawn functionality.  
+  - `AttackTrigger.cs`: Deducts 1 heart when a fireball hits the player.  
+  - `DisappearEffect.cs`: Restores 1 heart when a mushroom is collected and handles the mushroom's disappear animation.
 
-- **Minion NPCs**:
+---
+
+### **Bus Transportation with Button**
+- **Description**:  
+  - When near a bus stop, a button appears, allowing the player to teleport to the maze stop by clicking it.  
+- **Scripts**:  
+  - `BusButton.cs`: Executes the player's position transformation.  
+  - `ShowBusTransportButton.cs`: Displays the button when the player approaches the bus stop.
+
+---
+
+### **Collect Letter Fragments**
+- **Description**:  
+  - Collect 5 rotating, glowing letter fragments.  
+  - Each fragment disappears with an animation upon collection, and its content is revealed.  
+  - The collection progress updates accordingly.  
+- **Script**: `CollectiveLetter.cs`: Manages collection animations and content display for letter fragments.
+
+---
+
+### **Letter Button to Check Content Anytime**
+- **Description**:  
+  - Clicking the letter button or pressing SPACE toggles the display of the most recent letter content.  
+  - The letter UI can be hidden using the same controls.  
+- **Scripts**:  
+  - `LetterUI.cs`: Handles letter display toggling.  
+  - `ShowSendLetterButton.cs`: Displays the button when the player is near the mailbox.
+
+---
+
+### **Deliver the Complete Letter**
+- **Description**:  
+  - A button appears near the mailbox, allowing the player to send the letter if all 5 fragments are collected.  
+  - Upon sending, the final letter content is displayed, and a hidden NPC appears, signaling the game's conclusion.  
+- **Script**: `SendLetterButton.cs`
+
+---
+
+### **Quit Handler**
+- **Description**: The game will exit in the following scenarios:  
+  1. The player presses ESC.  
+  2. The player successfully delivers the complete letter.  
+- **Script**: `GameQuitHandler.cs`
   
-  At night, the ghosts will start casting light and shadow to show that they are dangerous right now.
-  When attack (by fireballs), there is sound effect to notice the player, because player may be in the middle of reading a letter.
-  The Minion will not really run into the player (overlap), but keep one step away for the purpose of attacking and clear view.
-  The Minion will stop attacking/following when it is during the daytime/the player returns to the home area.
-
-- **Health System**:
-  
-  The player has 4 hearts initially, and will lose 1 heart if being hit by the fireball from the ghost, can recover 1 heart if collecting a mushroom.
-  If the player is dead, they will be reborn at the start of the maze.
-  UI: shows and updates the current heart count simultaneously.
-  Health System: HealthSystem.cs  Has public update heart functions, also handles updating heart UI and die functions(returning to the reborn spot)
-  Attacked: AttackTrigger.cs      performs 1 heart damage when the fireball is collided into the player
-   
-
-- **Bus Transportation with Button**:
-  
-  When the player approaches the bus stop, there will be a pop up button on the screen showing that the player can click to take the bus and transport to the maze stop.
-  When clicked, the player will be send to the maze stop.
-
-- **Collect letter fragments**:
-  
-  There are 5 fragments featuring by rotating letter with shining light. When collected, they will disappear with a disappear animation, and then show the new fragment content.
-  The progress will also be updated.
-
-- **Letter Button to check letter content anytime**:
-  
-  There is a letter button that when clicked will show the latest letter content, and the player can close the letter by either hit the button again/space.
-
-- **Deliver the complete letter**:
-  
-  When the player approaches the mailbox, there will be a pop up button saying that you can click to send the letter. But it will only be clicked when all 5 fragments are collected.
-  When clicked successfully, the final letter content will show, and the hidden NPC will also appears to meet the player. This also indicates the game is finished.
-
-
 
 
 ## 2024/11/15 Updates:
