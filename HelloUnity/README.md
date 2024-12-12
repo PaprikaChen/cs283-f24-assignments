@@ -4,9 +4,18 @@ Paprika Chen
 ## Description
 This is a heartfelt adventure game where you play as Julian, a 22-year-old courier in heaven delivering fragmented messages from the living to souls in paradise. Navigate a magical maze filled with dangers, piece together lost letters, and uncover the emotional stories behind each sender and recipient. 
 
-# Game Features Documentation
-
 ## Updates (2024/12/12 - Final Version)
+
+## How to Play
+- Use **WASD** keys to move the player character.
+- Interact with buttons by clicking them using the mouse.
+
+## How to Build and Run in Unity
+1. Open the Unity project.
+2. Navigate to the `Project` scene.
+3. Click the **Run** button in the Unity Editor to start the game.
+
+# Game Features Documentation
 
 ### **Canvas Control**
 ![CanvasControl](https://github.com/user-attachments/assets/28c31b9e-c505-4dc2-95dd-56054a95e290)
