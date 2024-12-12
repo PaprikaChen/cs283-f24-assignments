@@ -72,7 +72,6 @@ public class DisappearEffect : MonoBehaviour
 
     void Update()
     {
-        // 如果未被拾取，则持续旋转
         if (!isBeingCollected)
         {
             transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.World);

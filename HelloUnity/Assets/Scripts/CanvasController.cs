@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class CanvasController : MonoBehaviour
 {
-    public CanvasGroup canvas1; // First canvas (with CanvasGroup component)
-    public CanvasGroup canvas2; // Second canvas (with CanvasGroup component)
+    public CanvasGroup canvas1; // First canvas 
+    public CanvasGroup canvas2; // Second canvas 
 
     void Start()
     {
