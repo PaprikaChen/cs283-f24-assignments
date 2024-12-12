@@ -71,12 +71,11 @@ public class LetterUI : MonoBehaviour
         if (newIndex >= 0 && newIndex < letters.Length)
         {
             currentLetterIndex = newIndex;
-            Debug.Log($"当前信件索引更新为 {currentLetterIndex + 1}");
+            Debug.Log($"当前信件索引更新为 {currentLetterIndex}");
             if (letterText != null)
             {
-                letterText.text = $"({currentLetterIndex}/5)";
+                letterText.text = $"({currentLetterIndex}/{letters.Length - 1})";
             }
-
         }
         else
         {
@@ -86,8 +85,8 @@ public class LetterUI : MonoBehaviour
 
     void Update()
     {
-        // 按下空格键时，关闭信件
-        if (isLetterOpen && Input.GetKeyDown(KeyCode.Space))
+        // 按下空格键时，切换信件的显示状态
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             ToggleLetter();
         }

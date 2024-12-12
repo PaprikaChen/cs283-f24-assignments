@@ -3,23 +3,23 @@ using UnityEngine;
 
 public class CollectiveLetter : MonoBehaviour
 {
-    public float animationDuration = 2f; // 动画持续时间
-    public Vector3 targetScale = new Vector3(0.2f, 0.2f, 0.2f); // 缩放目标
-    public float rotationAngle = 180; // 旋转角度
-    public float height = 3f; // 上升高度
-    public float rotationSpeed = 50f; // 每秒旋转速度
+    public float animationDuration = 2f; 
+    public Vector3 targetScale = new Vector3(0.2f, 0.2f, 0.2f); 
+    public float rotationAngle = 180; 
+    public float height = 3f; 
+    public float rotationSpeed = 50f; 
 
-    private AudioSource audioSource; // 声音组件
-    public LetterUI letterUI; // 引用 LetterUI 脚本
-    private bool isBeingCollected = false; // 是否正在被拾取
+    private AudioSource audioSource; 
+    public LetterUI letterUI; 
+    private bool isBeingCollected = false; 
 
     public void RunPickupAnimation()
     {
         if (audioSource != null)
         {
-            audioSource.Play(); // 播放拾取音效
+            audioSource.Play(); 
         }
-        isBeingCollected = true; // 标记为正在被拾取
+        isBeingCollected = true; 
         StartCoroutine(PickupAnimationCoroutine());
     }
 
@@ -47,14 +47,12 @@ public class CollectiveLetter : MonoBehaviour
         transform.localScale = targetScale;
         transform.rotation = endRotation;
 
-        // 更新信件内容并显示新信件
         if (letterUI != null)
         {
             letterUI.UpdateLetterIndex(letterUI.currentLetterIndex + 1);
             letterUI.ToggleLetter();
         }
 
-        // 隐藏对象
         gameObject.SetActive(false);
     }
 
@@ -65,7 +63,6 @@ public class CollectiveLetter : MonoBehaviour
 
     void Update()
     {
-        // 如果未被拾取，则持续旋转
         if (!isBeingCollected)
         {
             transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.World);
@@ -76,7 +73,7 @@ public class CollectiveLetter : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            RunPickupAnimation(); // 播放拾取动画
+            RunPickupAnimation(); 
         }
     }
 }
