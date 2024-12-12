@@ -6,37 +6,39 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
 
 # Game Features Documentation
 
+# Game Features Documentation
+
 ## Updates (2024/12/12 - Final Version)
 
 ### **Canvas Control**
 - **Description**: Manages multiple canvases for the starting pages of the game.
-- **Script**: `CanvasController.cs`
+- **Script**: [`CanvasController.cs`](Assets/Scripts/CanvasController.cs)
 
 ---
 
 ### **Day-Night Cycle**
 - **Description**: Smoothly transitions between four time states: sunrise, midday, sunset, and night. Adjusts ambient light color/intensity and the position, direction, and color of the main light source.
-- **Script**: `DayNightCycle.cs`
+- **Script**: [`DayNightCycle.cs`](Assets/Scripts/DayNightCycle.cs)
 
 ---
 
 ### **Guide NPCs**
 - **Description**: Guide NPCs react to the player's approach, initiate a dialogue to guide them to the next destination, and then watch the player.
-- **Script**: `BehaviorUnique.cs`
+- **Script**: [`BehaviorUnique.cs`](Assets/Scripts/BehaviorUnique.cs)
 
 ---
 
 ### **Minion NPCs**
 - **Light Control**:  
   - **Description**: Ghosts emit light and shadow during the night to indicate danger.  
-  - **Script**: `LightController.cs`
+  - **Script**: [`LightController.cs`](Assets/Scripts/LightController.cs)
   
 - **Behavior**:  
   - **Description**:  
     - Attack with fireballs, accompanied by sound effects to alert the player (useful if the player is reading a letter).  
     - Maintain distance from the player during attacks for visibility.  
     - Cease attacks and following behavior during the daytime or when the player returns to the home area.  
-  - **Script**: `BehaviorMinion.cs`
+  - **Script**: [`BehaviorMinion.cs`](Assets/Scripts/BehaviorMinion.cs)
 
 ---
 
@@ -49,9 +51,9 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
   - A UI displays and updates the heart count in real-time.
   
 - **Scripts**:  
-  - `HealthSystem.cs`: Handles heart updates, UI changes, and respawn functionality.  
-  - `AttackTrigger.cs`: Deducts 1 heart when a fireball hits the player.  
-  - `DisappearEffect.cs`: Restores 1 heart when a mushroom is collected and handles the mushroom's disappear animation.
+  - [`HealthSystem.cs`](Assets/Scripts/HealthSystem.cs): Handles heart updates, UI changes, and respawn functionality.  
+  - [`AttackTrigger.cs`](Assets/Scripts/AttackTrigger.cs): Deducts 1 heart when a fireball hits the player.  
+  - [`DisappearEffect.cs`](Assets/Scripts/DisappearEffect.cs): Restores 1 heart when a mushroom is collected and handles the mushroom's disappear animation.
 
 ---
 
@@ -59,8 +61,8 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
 - **Description**:  
   - When near a bus stop, a button appears, allowing the player to teleport to the maze stop by clicking it.  
 - **Scripts**:  
-  - `BusButton.cs`: Executes the player's position transformation.  
-  - `ShowBusTransportButton.cs`: Displays the button when the player approaches the bus stop.
+  - [`BusButton.cs`](Assets/Scripts/BusButton.cs): Executes the player's position transformation.  
+  - [`ShowBusTransportButton.cs`](Assets/Scripts/ShowBusTransportButton.cs): Displays the button when the player approaches the bus stop.
 
 ---
 
@@ -69,7 +71,7 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
   - Collect 5 rotating, glowing letter fragments.  
   - Each fragment disappears with an animation upon collection, and its content is revealed.  
   - The collection progress updates accordingly.  
-- **Script**: `CollectiveLetter.cs`: Manages collection animations and content display for letter fragments.
+- **Script**: [`CollectiveLetter.cs`](Assets/Scripts/CollectiveLetter.cs): Manages collection animations and content display for letter fragments.
 
 ---
 
@@ -78,8 +80,8 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
   - Clicking the letter button or pressing SPACE toggles the display of the most recent letter content.  
   - The letter UI can be hidden using the same controls.  
 - **Scripts**:  
-  - `LetterUI.cs`: Handles letter display toggling.  
-  - `ShowSendLetterButton.cs`: Displays the button when the player is near the mailbox.
+  - [`LetterUI.cs`](Assets/Scripts/LetterUI.cs): Handles letter display toggling.  
+  - [`ShowSendLetterButton.cs`](Assets/Scripts/ShowSendLetterButton.cs): Displays the button when the player is near the mailbox.
 
 ---
 
@@ -87,7 +89,7 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
 - **Description**:  
   - A button appears near the mailbox, allowing the player to send the letter if all 5 fragments are collected.  
   - Upon sending, the final letter content is displayed, and a hidden NPC appears, signaling the game's conclusion.  
-- **Script**: `SendLetterButton.cs`
+- **Script**: [`SendLetterButton.cs`](Assets/Scripts/SendLetterButton.cs)
 
 ---
 
@@ -95,7 +97,8 @@ This is a heartfelt adventure game where you play as Julian, a 22-year-old couri
 - **Description**: The game will exit in the following scenarios:  
   1. The player presses ESC.  
   2. The player successfully delivers the complete letter.  
-- **Script**: `GameQuitHandler.cs`
+- **Script**: [`GameQuitHandler.cs`](Assets/Scripts/GameQuitHandler.cs)
+
   
 
 
